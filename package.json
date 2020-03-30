@@ -4,7 +4,9 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "dev": "concurrently \"env-cmd -f ./config/dev.env nodemon ./src/index.js\" \"cd photo-gallery-client && npm start\""
+        "dev": "concurrently \"env-cmd -f ./config/dev.env nodemon ./src/index.js\" \"cd photo-gallery-client && npm start\"",
+        "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix photo-gallery-client && npm run build --prefix photo-gallery-client",
+        "start":"node ./src/index.js"
     },
     "keywords": [],
     "author": "",
