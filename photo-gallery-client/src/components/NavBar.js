@@ -15,8 +15,7 @@ const NavBar = () => {
         {isAuthenticated && <button onClick={() => logout()}>Log out</button>}
 
         {isAuthenticated && (
-            <span>
-                <Link to="/">Home</Link>&nbsp;
+            <span> 
                 <Link to="/profile">Profile</Link>
                 <Link to="/upload-images">Upload Images</Link>
                 <Link to = '/users'>Users</Link>
