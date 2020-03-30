@@ -19,6 +19,7 @@ class UploadImages extends React.Component {
 
     formSubmit = async (e) => {
         e.preventDefault();
+        document.querySelector('.loading-component').style.display = 'block';
         const currentState = {...this.state};
         console.log('currentState', currentState.files.length);
         const data = new FormData();
@@ -38,11 +39,12 @@ class UploadImages extends React.Component {
         }).then(res => {
             currentState.statusText = 'Images Uploaded Succesfully'
             this.setState(currentState);
-            e.target.reset();
         }).catch(e => {
             currentState.statusText = 'Something went wrong. Please try again later';
-            this.setState(currentState);
-            e.target.reset();
+            this.setState(currentState); 
+        }).finally(()=>{
+            document.querySelector('.form').reset();
+            document.querySelector('.loading-component').style.display = 'none';
         });  
 
         
@@ -51,7 +53,7 @@ class UploadImages extends React.Component {
     render () { 
         return(
             <div className = "container">
-                <form onSubmit = {this.formSubmit}>
+                <form className = 'form' onSubmit = {this.formSubmit}>
                     <label>Image Upload: </label>
                     <input onChange = {this.handleFileChange} type = 'file' multiple />
     
@@ -65,6 +67,9 @@ class UploadImages extends React.Component {
                     </div>)  
                     : null 
                 } 
+                <div className='loading-component' style = {{display:'none'}}>
+                    Please Wait...
+                </div>
             </div>
         );
     }
