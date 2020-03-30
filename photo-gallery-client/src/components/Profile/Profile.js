@@ -6,8 +6,8 @@ import ImageListing from '../common/ImageListing';
 class Profile extends React.Component {
     state = {
         images:[],
-        noImagesFound: false,
-        noImagesFound:false
+        noImagesFound: false, 
+        loading: true
     }
     static contextType = Auth0Context;
 
@@ -19,11 +19,13 @@ class Profile extends React.Component {
         })
         .then(res => {
             currentState.images = res.data;
-            this.setState(currentState);
+            currentState.loading = false;
+            this.setState(currentState); 
         })
         .catch(e => {
             if(e.response.status === 404) {
                 currentState.noImagesFound = true;
+                currentState.loading = false;
                 this.setState(currentState);
             }
         });
@@ -35,7 +37,11 @@ class Profile extends React.Component {
             return <h2>You have not uploaded images yet!</h2>
         }
         return( 
-            <ImageListing images = {this.state.images} />
+            <div className = 'container'>
+                {
+                    this.state.loading ? <p>Loading...</p> : (<ImageListing images = {this.state.images} />)
+                } 
+            </div>
         );
     }
 }

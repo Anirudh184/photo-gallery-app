@@ -27,12 +27,14 @@ class Users extends React.Component{
         let userList = [];
         if(this.state.users.length) {
             this.state.users.forEach((singleUser, index) => {
-                let user = (
-                    <li key = {index}>
-                        <Link to = {`/user/${singleUser._id}`}> {singleUser.email} </Link>
-                    </li>
-                );
-                userList.push(user);
+                if(singleUser.email != this.context.user.email) {
+                    let user = (
+                        <li key = {index}>
+                            <Link to = {`/user/${singleUser._id}`}> {singleUser.email} </Link>
+                        </li>
+                    );
+                    userList.push(user);
+                }
             });
         }
 
@@ -41,9 +43,16 @@ class Users extends React.Component{
         }
 
         return ( 
-            <ul className = 'users-wrapper'>
-                {userList}
-            </ul>  
+            <div className = 'container'>
+                {
+                    userList.length ? (
+                        <ul className = 'users-wrapper'>
+                            {userList}
+                        </ul>
+                    ) 
+                    : <p>Looks like your're are the only user we got as of now.</p>
+                } 
+            </div>
         );
     };
 } 
