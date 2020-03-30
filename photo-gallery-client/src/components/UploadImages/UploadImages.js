@@ -46,6 +46,7 @@ class UploadImages extends React.Component {
             currentState.statusText = 'Images Uploaded Succesfully'
             this.setState(currentState);
         }).catch(e => {
+            console.log(e);
             currentState.statusText = 'Something went wrong. Please try again later';
             this.setState(currentState); 
         }).finally(()=>{
