@@ -32,7 +32,7 @@ class UploadImages extends React.Component {
         
         const res = await axios({
             method: 'post',
-            url: 'http://localhost:5000/api/upload-images',
+            url: 'https://anirudh-photo-gallery-app.herokuapp.com/api/upload-images',
             data: data,
             headers: {
                 'content-type': `multipart/form-data;`,

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosClient = axios.create({
-    baseURL: 'http://localhost:5000'
+    baseURL: 'https://anirudh-photo-gallery-app.herokuapp.com'
 });
 
 export default axiosClient;
