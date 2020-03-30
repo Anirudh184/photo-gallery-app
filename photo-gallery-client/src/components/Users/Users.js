@@ -2,12 +2,14 @@ import React from 'react';
 import axios from 'axios';
 import axiosClient from "../../utils/axiosClient";
 import { Link } from 'react-router-dom';
+import { Auth0Context } from "../../react-auth0-spa";
 
 class Users extends React.Component{
     state = {
         users:[],
         loadingState: true
     }
+    static contextType = Auth0Context;
 
     componentDidMount = () => {
         const currentState = {...this.state}; 
