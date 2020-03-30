@@ -29,9 +29,14 @@ class UploadImages extends React.Component {
             data.append('image', currentState.files[i]);
         } 
         
+        if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+            const baseURL = 'http://localhost:5000';
+        } else {
+            const baseURL = 'https://anirudh-photo-gallery-app.herokuapp.com'
+        }
         await axios({
             method: 'post',
-            url: 'https://anirudh-photo-gallery-app.herokuapp.com/api/upload-images',
+            url: baseURL + '/api/upload-images',
             data: data,
             headers: {
                 'content-type': `multipart/form-data;`,

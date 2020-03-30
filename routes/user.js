@@ -93,7 +93,7 @@ router.post('/user', async(req, res) => {
  */
 const upload = multer({
     limits: {
-        fileSize: 100000000
+        fileSize: 1000000
     },
     fileFilter: (req, file, cb ) => {
         if(!file.originalname.match(/\.(png|jpg|jpeg)$/)) {
@@ -105,15 +105,20 @@ const upload = multer({
  router.post('/api/upload-images', upload.array('image', 10) , async (req, res) => { 
     const newfiles = new Array(); 
 
-    const fileToBuffer = new Promise((resolve, reject) => {
-        req.files.forEach(async(file, index, array) => {
-            let currentImage = await sharp(file.buffer).png().toBuffer(); 
-            newfiles.push(currentImage);
-            if (index === array.length -1) resolve();
-        }); 
-    });
+    
 
     try {
+        if(req.files.count > 10) {
+            throw new Error('Only 10 files can be uploaded at a time!')
+        }
+        const fileToBuffer = new Promise((resolve, reject) => {
+            req.files.forEach(async(file, index, array) => {
+                let currentImage = await sharp(file.buffer).png().toBuffer(); 
+                newfiles.push(currentImage);
+                if (index === array.length -1) resolve();
+            }); 
+        });
+
         const user = await Images.findOne({
             email: req.body.user
         }); 
@@ -136,7 +141,7 @@ const upload = multer({
             });
         }
     } catch(e) {
-        res.status(400).send(e)
+        res.status(400).send({e: error})
     } 
     
  }, (error, req, res, next) => {
