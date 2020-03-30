@@ -28,28 +28,24 @@ class UploadImages extends React.Component {
             data.append('image', currentState.files[i]);
         } 
         
-        // const res = await axios({
-        //     method: 'post',
-        //     url: 'https://anirudh-photo-gallery-app.herokuapp.com',
-        //     data: data,
-        //     headers: {
-        //         'content-type': `multipart/form-data;`,
-        //     }
-        // });
-
-        axios.post('/api/upload-images', {data}, {headers: {
-            'content-type': `multipart/form-data;`,
-        }})
-        .then(res => {
+        await axios({
+            method: 'post',
+            url: 'https://anirudh-photo-gallery-app.herokuapp.com',
+            data: data,
+            headers: {
+                'content-type': `multipart/form-data;`,
+            }
+        }).then(res => {
             currentState.statusText = 'Images Uploaded Succesfully'
             this.setState(currentState);
-        })
-        .catch(e => {
+            e.target.reset();
+        }).catch(e => {
             currentState.statusText = 'Something went wrong. Please try again later';
             this.setState(currentState);
-        });
+            e.target.reset();
+        });  
 
-        e.target.reset();
+        
     }
 
     render () { 
