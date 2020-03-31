@@ -8,7 +8,6 @@ import SingleUser from "./components/Users/SingleUser";
 import UploadImages from './components/UploadImages/UploadImages';
 import history from "./utils/history";
 import PrivateRoute from "./components/PrivateRoute";
-// import ()
 
 function App() {
   return (
