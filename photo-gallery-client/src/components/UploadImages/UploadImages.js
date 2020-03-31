@@ -68,7 +68,7 @@ class UploadImages extends React.Component {
                 </form> 
     
                 {
-                    this.state.statusText != '' ? 
+                    this.state.statusText !== '' ? 
                     (<div className = 'status'>
                         {this.state.statusText}
                     </div>)  

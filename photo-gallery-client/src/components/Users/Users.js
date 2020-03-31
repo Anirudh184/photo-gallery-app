@@ -1,5 +1,4 @@
-import React from 'react'; 
-import axios from 'axios';
+import React from 'react';  
 import axiosClient from "../../utils/axiosClient";
 import { Link } from 'react-router-dom';
 import { Auth0Context } from "../../react-auth0-spa";
@@ -29,7 +28,7 @@ class Users extends React.Component{
         let userList = [];
         if(this.state.users.length) {
             this.state.users.forEach((singleUser, index) => {
-                if(singleUser.email != this.context.user.email) {
+                if(singleUser.email !== this.context.user.email) {
                     let user = (
                         <li key = {index}>
                             <Link to = {`/user/${singleUser._id}`}> {singleUser.email} </Link>

@@ -1,6 +1,9 @@
 {
   "name": "photo-gallery-client",
   "version": "0.1.0",
+  "engines": {
+    "node": "12.16.1"
+  },
   "private": true,
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.6.5",

@@ -1,6 +1,5 @@
 import React from 'react';
-import Image from './singleImage';
-import { PromiseProvider } from 'mongoose';
+import Image from './singleImage'; 
 
 const ImageListing = (props) => {
     const imageList = [];
