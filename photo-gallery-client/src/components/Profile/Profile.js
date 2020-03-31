@@ -16,17 +16,17 @@ class Profile extends React.Component {
 
         axiosClient.post('/api/me/images', {
             email: this.context.user.email
-        })
-        .then(res => {
+        }).then(res => {
             currentState.images = res.data;
             currentState.loading = false;
             this.setState(currentState); 
-        })
-        .catch(e => {
-            if(e.response.status === 404) {
-                currentState.noImagesFound = true;
-                currentState.loading = false;
-                this.setState(currentState);
+        }).catch(e => {
+            if(e.response){
+                    if(e.response.status === 404) {
+                        currentState.noImagesFound = true;
+                        currentState.loading = false;
+                        this.setState(currentState);
+                    }
             }
         });
     }
@@ -37,9 +37,12 @@ class Profile extends React.Component {
             return <h2>You have not uploaded images yet!</h2>
         }
         return( 
-            <div className = 'container'>
+            <div className = 'container image-container'>
                 {
-                    this.state.loading ? <p>Loading...</p> : (<ImageListing images = {this.state.images} />)
+                    this.state.loading ? <p>Loading...</p> : (<ImageListing 
+                        pageTitle = 'Your Images' 
+                        images = {this.state.images} />
+                    )
                 } 
             </div>
         );

@@ -33,7 +33,9 @@ class SingleUser extends React.Component {
             return <h2>User has not uploaded any images yet!</h2>
         }
         return( 
-            <ImageListing images = {this.state.images} />
+        <div className = 'container image-container'>
+            <ImageListing pageTitle = 'User Images' images = {this.state.images} />
+        </div>
         );
     }
 }

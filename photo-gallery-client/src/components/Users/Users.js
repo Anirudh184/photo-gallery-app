@@ -46,6 +46,7 @@ class Users extends React.Component{
 
         return ( 
             <div className = 'container'>
+                <h1 className = 'page-title'> All Users </h1>
                 {
                     userList.length ? (
                         <ul className = 'users-wrapper'>

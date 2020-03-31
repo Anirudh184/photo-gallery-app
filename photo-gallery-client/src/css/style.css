@@ -1,0 +1,63 @@
+body, html {
+    height:100%;
+    margin:0;
+    font-size:16px;
+    font-family:"LATO", sans-serif;
+    font-weight:400;
+    line-height:1.8em;
+    color:#666;
+}
+.topbar {
+    padding: 20px;
+}
+
+.navbar a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+.navbar a:hover {
+    margin-right: 20px;
+    text-decoration: none;
+    color: brown;
+    border-bottom: 1px solid black;
+}
+
+.topbar button {
+    float: right;
+}
+
+.container {
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: 50px;
+}
+h1.page-title {
+    width: 100%;
+    text-align: center;
+}
+
+.image-list {
+    display: flex;  
+    flex-wrap: wrap;
+}  
+
+.single-image-wrapper > img { 
+    width: 100px;
+    margin: 10px;  
+    border: 1px solid black;
+  }
+
+  button {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    padding: 10px;
+  }
+
+  button:hover {
+      cursor: pointer;
+      background-color: black;
+      color: blanchedalmond; 
+  }
